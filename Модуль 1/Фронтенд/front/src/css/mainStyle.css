@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#root{
+    background-color: rgb(191, 246, 254);
+    padding: 15px;
+}
+
+.container{
+    padding: 30px 25px;
+    margin: 30px 80px;
+    background-color: rgb(235, 251, 250);
+    box-sizing: border-box;
+    border-radius: 0 10px 0 10px;
+}
+
+.btn{
+    padding: 10px 35px;
+    background-color: white;
+    border: none;
+    margin: 0 15px;
+    border-radius: 10px;
+}
