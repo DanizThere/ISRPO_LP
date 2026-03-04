@@ -6,7 +6,7 @@ export default function Main(){
 
     return(
         <>
-            <Header/>
+            <Header pageName="Главная"/>
             
             <Container>
                 <h1 className="title">БытСервис</h1> 

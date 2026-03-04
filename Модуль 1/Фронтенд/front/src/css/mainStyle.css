@@ -5,7 +5,7 @@
 
 #root{
     background-color: rgb(191, 246, 254);
-    padding: 15px;
+    height: 100vh;
 }
 
 .container{
@@ -14,6 +14,14 @@
     background-color: rgb(235, 251, 250);
     box-sizing: border-box;
     border-radius: 0 10px 0 10px;
+    padding: 15px;
+}
+
+.header{
+    display: flex;
+    justify-content:space-between;
+    background-color: rgb(127, 210, 255);
+    padding: 15px;
 }
 
 .btn{
@@ -22,4 +30,10 @@
     border: none;
     margin: 0 15px;
     border-radius: 10px;
+    transition: 0.1s all;
+}
+
+.btn:active{
+    transform: scale(0.98);
+    background-color: rgb(222, 222, 222);
 }

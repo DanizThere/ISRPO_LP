@@ -1,0 +1,21 @@
+.authForm{
+    height: 300px;
+    width: 500px;
+    background-color: white;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 0;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.authErrorTitle{
+    text-align: center;
+}
+
+.submit{
+    background-color: green;
+    color: white;
+}
