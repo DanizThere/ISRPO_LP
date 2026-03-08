@@ -1,7 +1,6 @@
 ﻿using Backend.Models;
-using Microsoft.AspNetCore.Mvc;
 
-namespace Backend
+namespace Backend.Extensions
 {
     public static class RequestExtension
     {
@@ -10,9 +9,9 @@ namespace Backend
         {
             return selectBy switch
             {
-                1 => query.Where(x => x.requestStatus == "Новая заявка"),
-                2 => query.Where(x => x.requestStatus == "Готова к выдаче"),
-                3 => query.Where(x => x.requestStatus == "В процессе ремонта"),
+                1 => query.Where(x => x.requeststatus == "Новая заявка"),
+                2 => query.Where(x => x.requeststatus == "Готова к выдаче"),
+                3 => query.Where(x => x.requeststatus == "В процессе ремонта"),
                 _ => query,
             };
         }
@@ -21,12 +20,12 @@ namespace Backend
         {
             if (!string.IsNullOrEmpty(techType))
             {
-                query = query.Where(x => x.homeTechType == techType);
+                query = query.Where(x => x.hometechtype == techType);
             }
 
             if (!string.IsNullOrEmpty(techModel))
             {
-                query = query.Where(x => x.homeTechModel == techModel);
+                query = query.Where(x => x.hometechmodel == techModel);
             }
 
             return query;

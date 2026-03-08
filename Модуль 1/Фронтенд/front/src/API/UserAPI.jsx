@@ -13,5 +13,14 @@ export const UserAPI = {
         return data
     },
 
+    get: async (id) => {
+        const data = await FetchData(`user/get/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            } 
+        })
 
+        return data
+    }
 }

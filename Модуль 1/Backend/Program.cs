@@ -2,13 +2,16 @@ using Backend.DB;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 var connection = builder.Configuration.GetConnectionString("Connection");
+
+builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddCors();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>
@@ -27,11 +30,8 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
     };
 });
-
 builder.Services.AddAuthorization();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddCors();
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
@@ -43,15 +43,16 @@ var app = builder.Build();
 app.UseCors(builder =>
 {
     builder.WithHeaders().AllowAnyHeader();
-    builder.WithOrigins().AllowAnyOrigin();
-    builder.AllowAnyMethod().AllowAnyMethod();
-    builder.AllowAnyMethod().AllowCredentials();
+    builder.WithOrigins("http://localhost:5173");
+    builder.WithMethods().AllowAnyMethod();
+    builder.WithMethods().AllowCredentials();
 });
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

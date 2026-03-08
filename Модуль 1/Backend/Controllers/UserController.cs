@@ -9,25 +9,37 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Backend.Models;
 using Microsoft.AspNetCore.Authorization;
+using Backend.Contracts;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController(ApplicationContext dbContext, IConfiguration configuration) : ControllerBase
+    public class UserController(ApplicationContext dbContext, IConfiguration configuration) : ControllerBase
     {
         private readonly ApplicationContext _dbContext = dbContext;
         private readonly IConfiguration _configuration = configuration;
 
-        [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(string login, string password)
+        [HttpGet("get/{id}")]
+        public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _dbContext.users.FirstOrDefaultAsync(x => x.login == login && x.password == password);
+            var user = await _dbContext.users.FirstOrDefaultAsync(x => x.userid == id);
+
+            if (user is null) return NotFound();
+
+            return Ok(user);
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> Login([FromBody] Login login)
+        {
+            var user = await _dbContext.users.FirstOrDefaultAsync(x => x.login == login.login && x.password == login.password);
 
             if(user is null) return Unauthorized();
 
             var claims = new List<Claim> {
-                new("userId", user.userID.ToString()),
+                new("userId", user.userid.ToString()),
+                new("userRole", user.type),
                 new(ClaimTypes.Role, user.type)
             };
 
@@ -39,13 +51,15 @@ namespace Backend.Controllers
 
             var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
 
-            return tokenValue;
+            HttpContext.Response.Cookies.Append("cookie", tokenValue.ToString());
+
+            return Ok(tokenValue);
         }
 
         [HttpPost("reg")]
         public async Task<ActionResult> Create([FromBody] User user)
         {
-            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userID == user.userID);
+            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userid == user.userid);
 
             if (dbUser is not null) return BadRequest("Пользователь с данным логином уже существует");
 
@@ -54,11 +68,11 @@ namespace Backend.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Админ")]
         [HttpPost("reg/master")]
         public async Task<ActionResult> CreateMaster([FromBody] User user)
         {
-            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userID == user.userID);
+            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userid == user.userid);
 
             if (dbUser is not null) return BadRequest("Пользователь с данным логином уже существует");
 
@@ -69,11 +83,11 @@ namespace Backend.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Админ")]
         [HttpPost("reg/manager")]
         public async Task<ActionResult> CreateManager([FromBody] User user)
         {
-            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userID == user.userID);
+            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userid == user.userid);
 
             if (dbUser is not null) return BadRequest("Пользователь с данным логином уже существует");
 
@@ -84,11 +98,11 @@ namespace Backend.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Админ")]
         [HttpPost("reg/operator")]
         public async Task<ActionResult> CreateOperator([FromBody] User user)
         {
-            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userID == user.userID);
+            var dbUser = await _dbContext.users.FirstOrDefaultAsync(x => x.login == user.login || x.userid == user.userid);
 
             if (dbUser is not null) return BadRequest("Пользователь с данным логином уже существует");
 

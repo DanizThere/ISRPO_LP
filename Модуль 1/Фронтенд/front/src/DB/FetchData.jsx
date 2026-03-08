@@ -1,8 +1,8 @@
-import { ServerAddress } from "../ConstData";
+import { ServerAddress } from "./ConstData.jsx";
 
-export async function FetchData({params, options = {}}){
+export async function FetchData(url, options = {}){
     try{
-        const data = await fetch(`${ServerAddress}${params}`, options)
+        const data = await fetch(`${ServerAddress}/${url}`, options)
 
         if(!data.ok) throw new Error(data.status);
 

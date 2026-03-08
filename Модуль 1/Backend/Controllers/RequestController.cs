@@ -1,7 +1,8 @@
-﻿using Backend.DB;
+﻿using Backend.Contracts;
+using Backend.DB;
+using Backend.Extensions;
 using Backend.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +16,16 @@ namespace Backend.Controllers
 
         [Authorize]
         [HttpGet("get")]
-        public async Task<ActionResult<IEnumerable<Request>>> GetAll([FromQuery] string type, [FromQuery] int id)
+        public async Task<ActionResult<IEnumerable<Request>>> GetAll()
         {
-            switch (type) 
+            var cookie = Request.Cookies["cookie"];
+            if (string.IsNullOrEmpty(cookie)) return Unauthorized();
+
+            var payload = JWTDecoder.Decoder.DecodePayload<DecodedToken>(cookie);
+
+            switch (payload.userRole)
             {
+                case "Админ":
                 case "Оператор":
                 case "Менеджер":
                     var requestManager = await _dbContext.requests
@@ -28,7 +35,7 @@ namespace Backend.Controllers
                     if (requestManager is null) return NotFound("Заявок нет.");
                     return Ok(requestManager);
                 case "Мастер":
-                    var requestMaster = await _dbContext.requests.Where(x => x.masterID == id)
+                    var requestMaster = await _dbContext.requests.Where(x => x.masterid == Convert.ToInt32(payload.userId))
                         .AsNoTracking()
                         .ToListAsync();
 
@@ -36,7 +43,7 @@ namespace Backend.Controllers
                     return Ok(requestMaster);
                 case "Заказчик":
                 default:
-                    var request = await _dbContext.requests.Where(x => x.clientID == id)
+                    var request = await _dbContext.requests.Where(x => x.clientid == Convert.ToInt32(payload.userId))
                         .AsNoTracking()
                         .ToListAsync();
 
@@ -48,10 +55,16 @@ namespace Backend.Controllers
         [Authorize]
         [HttpGet("filter")]
         //selectBy => 1 - новые, 2 - закрытые, 3 - текущие (в процессе ремонта)
-        public async Task<ActionResult<IEnumerable<Request>>> GetByFilter([FromQuery] string type, [FromQuery] int id, [FromQuery] int? selectBy, [FromQuery] string? techType, [FromQuery] string? techModel)
+        public async Task<ActionResult<IEnumerable<Request>>> GetByFilter([FromQuery] int? selectBy, [FromQuery] string? techType, [FromQuery] string? techModel)
         {
-            switch (type)
+            var cookie = Request.Cookies["cookie"];
+            if (string.IsNullOrEmpty(cookie)) return Unauthorized();
+
+            var payload = JWTDecoder.Decoder.DecodePayload<DecodedToken>(cookie);
+
+            switch (payload.userRole)
             {
+                case "Админ":
                 case "Оператор":
                 case "Менеджер":
                     var requestManager = await _dbContext.requests
@@ -63,7 +76,7 @@ namespace Backend.Controllers
                     if (requestManager is null) return NotFound("Заявок нет.");
                     return Ok(requestManager);
                 case "Мастер":
-                    var requestMaster = await _dbContext.requests.Where(x => x.masterID == id)
+                    var requestMaster = await _dbContext.requests.Where(x => x.masterid == Convert.ToInt32(payload.userId))
                         .AsNoTracking()
                         .SelectBy(selectBy)
                         .FilterBy(techType, techModel)
@@ -73,7 +86,7 @@ namespace Backend.Controllers
                     return Ok(requestMaster);
                 case "Заказчик":
                 default:
-                    var request = await _dbContext.requests.Where(x => x.clientID == id)
+                    var request = await _dbContext.requests.Where(x => x.clientid == Convert.ToInt32(payload.userId))
                         .AsNoTracking()
                         .SelectBy(selectBy)
                         .FilterBy(techType, techModel)
@@ -88,17 +101,41 @@ namespace Backend.Controllers
         [HttpPatch("update")]
         public async Task<ActionResult<Request>> Update([FromBody] Request request)
         {
-            var response = await _dbContext.requests.Where(x => x.requestID == request.requestID).ExecuteUpdateAsync(
+            var response = await _dbContext.requests.Where(x => x.requestid == request.requestid).ExecuteUpdateAsync(
                 x => x
-                .SetProperty(y => y.repairParts, y => request.repairParts)
-                .SetProperty(y => y.masterID, y => request.masterID)
-                .SetProperty(y => y.completionDate, y => request.completionDate)
-                .SetProperty(y => y.requestStatus, y => request.requestStatus)
-                .SetProperty(y => y.problemDescription, y => request.problemDescription)
-                .SetProperty(y => y.homeTechModel, y => request.homeTechModel)
-                .SetProperty(y => y.homeTechType, y => request.homeTechType));
+                .SetProperty(y => y.repairparts, y => request.repairparts)
+                .SetProperty(y => y.masterid, y => request.masterid)
+                .SetProperty(y => y.completiondate, y => request.completiondate)
+                .SetProperty(y => y.requeststatus, y => request.requeststatus)
+                .SetProperty(y => y.problemdescryption, y => request.problemdescryption)
+                .SetProperty(y => y.hometechmodel, y => request.hometechmodel)
+                .SetProperty(y => y.hometechtype, y => request.hometechtype));
 
             return request;
+        }
+
+        [Authorize(Roles = "Менеджер, Оператор, Админ")]
+        [HttpPatch("setMaster")]
+        public async Task<ActionResult<Request>> SetMaster([FromQuery] int requestId, [FromQuery] int masterId)
+        {
+            var user = await _dbContext.users.FirstOrDefaultAsync(x => x.userid == masterId);
+
+            if (user?.type is not "Мастер") return BadRequest("Данный пользователь не является мастером.");
+
+            var request = await _dbContext.requests.Where(x => x.requestid == requestId)
+                .ExecuteUpdateAsync(x => x.SetProperty(y => y.masterid, y => masterId));
+
+            return Ok(request);
+        }
+
+        [Authorize(Roles = "Мастер, Менеджер, Оператор, Админ")]
+        [HttpPatch("setStatus")]
+        public async Task<ActionResult<Request>> SetStatus([FromQuery] int requestId, [FromQuery] string status)
+        {
+            var request = await _dbContext.requests.Where(x => x.requestid == requestId)
+                .ExecuteUpdateAsync(x => x.SetProperty(y => y.requeststatus, y => status));
+
+            return Ok(request);
         }
     }
 }
