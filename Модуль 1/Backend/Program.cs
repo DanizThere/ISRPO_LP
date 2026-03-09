@@ -1,5 +1,6 @@
 using Backend.DB;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -10,7 +11,16 @@ var connection = builder.Configuration.GetConnectionString("Connection");
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+        .AllowCredentials()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
@@ -50,13 +60,13 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-app.UseCors(builder =>
+app.UseCookiePolicy(new CookiePolicyOptions
 {
-    builder.WithHeaders().AllowAnyHeader();
-    builder.WithOrigins("http://localhost:5173");
-    builder.WithMethods().AllowAnyMethod();
-    builder.WithMethods().AllowCredentials();
+    MinimumSameSitePolicy = SameSiteMode.None,
+    HttpOnly = HttpOnlyPolicy.None,
+    Secure = CookieSecurePolicy.SameAsRequest
 });
+app.UseCors("Frontend");
 
 if (app.Environment.IsDevelopment())
 {
@@ -64,7 +74,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthentication();

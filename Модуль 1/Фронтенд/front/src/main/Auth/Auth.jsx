@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Container from "../../components/Containter";
 import { UserAPI } from "../../API/UserAPI";
+import Cookies from "js-cookie";
 
 export default function Auth(){
     const [isShowPassword, setShowPassword] = useState(false)
@@ -15,10 +16,10 @@ export default function Auth(){
 
         try{
             const formData = Object.fromEntries(new FormData(event.target).entries())
-            await UserAPI.login(formData)
-                .then(function nav(){
-                    navigate("/request")
-                })  
+            const token = await UserAPI.login(formData)
+            if(token){
+                navigate("/request")
+            } 
         } catch (error){
             setError(`Произошла ошибка: ${error}. Повторите заново через какое-то время`)
         }

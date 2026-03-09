@@ -7,8 +7,9 @@ export const RequestAPI = {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
-            }
-        }) 
+            },
+            credentials: 'include'
+        })
 
         return data
     },

@@ -23,7 +23,7 @@ namespace Backend.Controllers
 
         [Authorize]
         [HttpGet("request/{id}")]
-        public async Task<ActionResult<Comment>> GetAllByRequest(int id)
+        public async Task<ActionResult<IEnumerable<Comment>>> GetAllByRequest(int id)
         {
             var comments = await _dbContext.comments.Where(x => x.requestid == id)
                 .OrderBy(x => x.commentid)

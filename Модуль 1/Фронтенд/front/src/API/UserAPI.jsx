@@ -4,13 +4,14 @@ export const UserAPI = {
     login: async (request) => {
         const data = await FetchDataString("user/login", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(request)
         }) 
 
-        return data
+        return data.text()
     },
 
     get: async (id) => {

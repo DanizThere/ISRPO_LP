@@ -5,7 +5,7 @@
 
 #root{
     background-color: rgb(191, 246, 254);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .container{

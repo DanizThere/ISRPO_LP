@@ -18,7 +18,7 @@ namespace Backend.Controllers
         [HttpGet("get")]
         public async Task<ActionResult<IEnumerable<Request>>> GetAll()
         {
-            var cookie = Request.Cookies["cookie"];
+            var cookie = HttpContext.Request.Cookies["cookie"];
             if (string.IsNullOrEmpty(cookie)) return Unauthorized();
 
             var payload = JWTDecoder.Decoder.DecodePayload<DecodedToken>(cookie);
@@ -57,7 +57,7 @@ namespace Backend.Controllers
         //selectBy => 1 - новые, 2 - закрытые, 3 - текущие (в процессе ремонта)
         public async Task<ActionResult<IEnumerable<Request>>> GetByFilter([FromQuery] int? selectBy, [FromQuery] string? techType, [FromQuery] string? techModel)
         {
-            var cookie = Request.Cookies["cookie"];
+            var cookie = HttpContext.Request.Cookies["cookie"];
             if (string.IsNullOrEmpty(cookie)) return Unauthorized();
 
             var payload = JWTDecoder.Decoder.DecodePayload<DecodedToken>(cookie);
