@@ -17,6 +17,7 @@ export default function Header({pageName}){
         try
         {
             const token = Cookies.get("cookie")
+            if(!token) throw new Error("Пользователь не авторизован")
             const decoded = jwtDecode(token)
 
             if(decoded) setUserData(decoded)

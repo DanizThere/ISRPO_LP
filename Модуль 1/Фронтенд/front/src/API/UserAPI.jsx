@@ -1,8 +1,8 @@
-import { FetchData } from "../DB/FetchData";
+import { FetchData, FetchDataString } from "../DB/FetchData";
 
 export const UserAPI = {
     login: async (request) => {
-        const data = await FetchData("user/login", {
+        const data = await FetchDataString("user/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

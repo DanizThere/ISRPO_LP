@@ -10,31 +10,29 @@ export default function AuthPrefab({customEvent, name, children, isLogin = false
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
-    function submitData(event){
+    async function submitData(event){
         event.preventDefault()
 
         try{
             const form = event.target;
             const formData = new FormData(form)
-
-            customEvent()
+            console.log(formData)
+            if(customEvent) customEvent()
             
             if(isLogin){
-                const result = UserAPI.login(formData)
-                if(result){
+                await UserAPI.login(formData)
+                .then(function nav(){
                     navigate("/request")
-                }
+                })
             }else{
-                const result = UserAPI.create(formData)
-                if(result){
-                    const loginResult = UserAPI.login(formData)
+                await UserAPI.create(formData)
+                .then(function loadData(data){
+                    const loginResult = UserAPI.login(data)
                     if(loginResult){
                         navigate("/request")
                     }  
-                }
-            }
-
-            
+                })
+            }       
         } catch (error){
             setError(`Произошла ошибка: ${error}. Повторите заново через какое-то время`)
         }

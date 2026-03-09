@@ -19,32 +19,25 @@ export default function GetRequests(){
         try
         {
             const user = Cookies.get("cookie")
+            if(!user) throw new Error("Пользователь не авторизован")
             const decoded = jwtDecode(user)
+
             const data = UserAPI.get(decoded.userId)
             if(data){
                 setUserData(data)
 
-                var requests = await selectRequests(user)
+                var requests = await RequestAPI.getAll(decoded)
+                alert(requests)
                 if(requests) setRequestData(requestData)
             }
 
         }
         catch (error){
-            alert(error)
+            console.error(error)
             setLoading(false);
         }
 
         setLoading(true)
-    }
-
-    async function selectRequests(token){
-        try{
-            const data = await RequestAPI.getAll(token)
-            if(data) setRequestData(data)
-        } catch(error)
-        {
-
-        }
     }
 
     useEffect(() => {

@@ -1,9 +1,7 @@
 ﻿using Backend.DB;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
-using System.IdentityModel.Tokens;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -43,15 +41,15 @@ namespace Backend.Controllers
                 new(ClaimTypes.Role, user.type)
             };
 
-            var signingCreditals = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"])), SecurityAlgorithms.HmacSha256);
+            var signingCreditials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"])), SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(signingCredentials: signingCreditals,
+            var token = new JwtSecurityToken(signingCredentials: signingCreditials,
                 expires: DateTime.UtcNow.AddHours(Convert.ToInt32(_configuration["JWT:ExpiredHours"])),
                 claims: claims);
 
             var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
 
-            HttpContext.Response.Cookies.Append("cookie", tokenValue.ToString());
+            HttpContext.Response.Cookies.Append("cookie", tokenValue);
 
             return Ok(tokenValue);
         }

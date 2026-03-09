@@ -1,3 +1,5 @@
+import { FetchData } from "../DB/FetchData"
+
 export const RequestAPI = {
     getAll: async (token) => {
         const data = await FetchData("request/get", {
@@ -5,8 +7,7 @@ export const RequestAPI = {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(request)
+            }
         }) 
 
         return data
