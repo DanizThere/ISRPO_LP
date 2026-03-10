@@ -7,6 +7,8 @@ import { UserAPI } from "../../API/UserAPI";
 import { jwtDecode } from "jwt-decode";
 import { RequestAPI } from "../../API/RequestAPI";
 import Container from "../../components/Containter";
+import Button from "../../components/Button";
+import { DecodedToken, Token } from "../../DB/ConstData";
 
 export default function GetRequests() {
     const [loading, setLoading] = useState(true);
@@ -17,13 +19,13 @@ export default function GetRequests() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const cookie = Cookies.get("cookie");
+                const cookie = await Token()
                 if (!cookie) {
                     navigate("/auth");
                     return;
                 }
 
-                const decoded = jwtDecode(cookie);
+                const decoded = await DecodedToken()
                 
                 const user = await UserAPI.get(decoded.userId);
                 setUserData(user);
@@ -57,10 +59,11 @@ export default function GetRequests() {
                     <h1>Здравствуйте, {userData?.fio}</h1>
                 </div>
                 <div>
+                    <Button onClick={() => navigate("create")}>Создать новую заявку</Button>
                     <h3>Ваши заявки:</h3>
                 </div>
                 {requestData.length > 0 ? (
-                    requestData.map((request) => <RequestCard key={request.id} request={request} />)
+                    requestData.map((request) => <RequestCard request={request} />)
                 ) : (
                     <p>Нет заявок для отображения</p>
                 )}

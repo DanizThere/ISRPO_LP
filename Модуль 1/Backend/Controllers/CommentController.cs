@@ -26,7 +26,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<IEnumerable<Comment>>> GetAllByRequest(int id)
         {
             var comments = await _dbContext.comments.Where(x => x.requestid == id)
-                .OrderBy(x => x.commentid)
+                .OrderByDescending(x => x.commentid)
                 .ToListAsync();
 
             if (!comments.Any()) return NotFound();

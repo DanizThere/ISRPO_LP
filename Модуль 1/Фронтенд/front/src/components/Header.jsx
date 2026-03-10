@@ -5,6 +5,7 @@ import { FetchData } from "../DB/FetchData";
 import Cookies from 'js-cookie'
 import { jwtDecode } from 'jwt-decode'
 import { UserAPI } from "../API/UserAPI";
+import { DecodedToken, Token } from "../DB/ConstData";
 
 export default function Header({pageName}){
     const [loading, setLoading] = useState(false)
@@ -16,9 +17,9 @@ export default function Header({pageName}){
     async function getData(){
         try
         {
-            const token = Cookies.get("cookie")
+            const token = await Token()
             if(!token) throw new Error("Пользователь не авторизован")
-            const decoded = jwtDecode(token)
+            const decoded = await DecodedToken()
 
             if(decoded) setUserData(decoded)
         }
@@ -36,6 +37,11 @@ export default function Header({pageName}){
         getData()
     },[])
 
+    function logOut(){
+        Cookies.remove("cookie")
+        window.location.reload();
+    }
+
     return(
         <>
         {!loading ? <>
@@ -48,6 +54,7 @@ export default function Header({pageName}){
 
                 {isAuth ? <div className="auth">
                     <Button onClick={() => navigate(`/request`)}>В личный кабинет</Button>
+                    <Button onClick={() => logOut()}>Выйти</Button>
                 </div> : <div className="noAuth">
                     <Button className="authBtn" onClick={() => navigate("/auth")}>Авторизация</Button>
                     <Button className="authBtn" onClick={() => navigate("/reg")}>Регистрация</Button>

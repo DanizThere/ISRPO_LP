@@ -53,6 +53,23 @@ namespace Backend.Controllers
         }
 
         [Authorize]
+        [HttpPost("create")]
+        public async Task<ActionResult> Create([FromBody] Request request)
+        {
+            try
+            {
+                _dbContext.requests.Add(request);
+                await _dbContext.SaveChangesAsync();
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest($"{ex.Message}.\n{ex.StackTrace}.\n{ex.InnerException}");
+
+            }
+        }
+
+        [Authorize]
         [HttpGet("filter")]
         //selectBy => 1 - новые, 2 - закрытые, 3 - текущие (в процессе ремонта)
         public async Task<ActionResult<IEnumerable<Request>>> GetByFilter([FromQuery] int? selectBy, [FromQuery] string? techType, [FromQuery] string? techModel)

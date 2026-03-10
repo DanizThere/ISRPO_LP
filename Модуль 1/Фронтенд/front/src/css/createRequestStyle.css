@@ -1,0 +1,28 @@
+.createRequest{
+    min-height: 300px;
+    min-width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 0;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.comms{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.createRequest textarea{
+    min-height: 100px;
+    min-width: 80%;
+}
+
+.return {
+    background-color: cornflowerblue;
+    color: white;
+}
