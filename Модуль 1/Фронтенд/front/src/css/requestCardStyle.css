@@ -1,7 +1,7 @@
 .request{
-    width: 500px;
+    min-width: 500px;
     margin: 10px;
-    height: 100px;
+    min-height: 100px;
     padding: 20px;
     background-color: rgb(200, 238, 247);
     color: rgb(0, 0, 0);

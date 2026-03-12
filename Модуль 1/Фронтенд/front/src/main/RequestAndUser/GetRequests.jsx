@@ -8,12 +8,14 @@ import { jwtDecode } from "jwt-decode";
 import { RequestAPI } from "../../API/RequestAPI";
 import Container from "../../components/Containter";
 import Button from "../../components/Button";
-import { DecodedToken, Token } from "../../DB/ConstData";
+import { DecodedToken, managerRole, masterRole, operatorRole, Token } from "../../DB/ConstData";
+import { StatisticAPI } from "../../API/StatisticAPI";
 
 export default function GetRequests() {
     const [loading, setLoading] = useState(true);
     const [requestData, setRequestData] = useState([]);
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState([]);
+    const [injuresStatistic, setInjuresStatistic] = useState([])
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,9 +26,11 @@ export default function GetRequests() {
                     navigate("/auth");
                     return;
                 }
+                const injures = await StatisticAPI.getInjuresStatistic()
+                setInjuresStatistic(injures)
 
                 const decoded = await DecodedToken()
-                
+
                 const user = await UserAPI.get(decoded.userId);
                 setUserData(user);
 
@@ -57,6 +61,13 @@ export default function GetRequests() {
             <Container>
                 <div className="userName">
                     <h1>Здравствуйте, {userData?.fio}</h1>
+                    {userData.userRole != managerRole 
+                    || userData.userRole != operatorRole 
+                    || userData.userRole != masterRole ? (
+                    <>
+                        <h2>Статистика по поломкам:</h2>
+                        {injuresStatistic.map((inj) => <p>{inj}</p>)}
+                    </>) : (<></>)}
                 </div>
                 <div>
                     <Button onClick={() => navigate("create")}>Создать новую заявку</Button>

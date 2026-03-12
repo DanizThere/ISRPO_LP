@@ -30,6 +30,7 @@ namespace Backend.Controllers
                 case "Менеджер":
                     var requestManager = await _dbContext.requests
                         .AsNoTracking()
+                        .OrderByDescending(x => x.requestid)
                         .ToListAsync();
 
                     if (requestManager is null) return NotFound("Заявок нет.");
@@ -37,6 +38,7 @@ namespace Backend.Controllers
                 case "Мастер":
                     var requestMaster = await _dbContext.requests.Where(x => x.masterid == Convert.ToInt32(payload.userId))
                         .AsNoTracking()
+                        .OrderByDescending(x => x.requestid)
                         .ToListAsync();
 
                     if (requestMaster is null) return NotFound("Заявок нет.");
@@ -45,10 +47,35 @@ namespace Backend.Controllers
                 default:
                     var request = await _dbContext.requests.Where(x => x.clientid == Convert.ToInt32(payload.userId))
                         .AsNoTracking()
+                        .OrderByDescending(x => x.requestid)
                         .ToListAsync();
 
                     if (request is null) return NotFound("Заявок нет.");
                     return Ok(request);
+            }
+        }
+
+        [Authorize]
+        [HttpGet("get/{id}")]
+        public async Task<ActionResult<Request>> Get(int id)
+        {
+            var cookie = HttpContext.Request.Cookies["cookie"];
+            if (string.IsNullOrEmpty(cookie)) return Unauthorized();
+
+            var payload = JWTDecoder.Decoder.DecodePayload<DecodedToken>(cookie);
+
+            switch (payload.userRole)
+            {
+                case "Админ":
+                case "Оператор":
+                case "Заказчик":
+                    var request = await _dbContext.requests.FirstOrDefaultAsync(x => x.requestid == id);
+
+                    if (request is null) return NotFound("Заявок нет.");
+                    return Ok(request);
+                default:
+                    return Unauthorized();
+                    
             }
         }
 
@@ -137,12 +164,14 @@ namespace Backend.Controllers
         {
             var user = await _dbContext.users.FirstOrDefaultAsync(x => x.userid == masterId);
 
-            if (user?.type is not "Мастер") return BadRequest("Данный пользователь не является мастером.");
+            if (user.type != "Мастер") return BadRequest("Данный пользователь не является мастером.");
 
             var request = await _dbContext.requests.Where(x => x.requestid == requestId)
                 .ExecuteUpdateAsync(x => x.SetProperty(y => y.masterid, y => masterId));
 
-            return Ok(request);
+            var newReq = await _dbContext.requests.FirstOrDefaultAsync(x => x.requestid == requestId);
+
+            return Ok(newReq);
         }
 
         [Authorize(Roles = "Мастер, Менеджер, Оператор, Админ")]

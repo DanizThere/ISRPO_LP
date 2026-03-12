@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\statisticcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\statisticcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\models\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:models\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,24 +27,16 @@
       "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:contracts\\decodedtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\models\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:models\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\statisticcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\statisticcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\db\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:db\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C5552BC-EF64-44EE-B602-B0F4B24CEF2A}|Backend.csproj|f:\\gitprojects\\isrpo_lp\\\u043C\u043E\u0434\u0443\u043B\u044C 1\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -86,46 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RequestController.cs",
-              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\RequestController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RequestController.cs",
-              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\RequestController.cs",
-              "RelativeToolTip": "Controllers\\RequestController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAiwDgAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T11:26:34.699Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Request.cs",
-              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\Request.cs",
-              "RelativeDocumentMoniker": "Models\\Request.cs",
-              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\Request.cs",
-              "RelativeToolTip": "Models\\Request.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T11:17:15.102Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "User.cs",
-              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T11:15:41.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "CommentController.cs",
               "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\CommentController.cs",
               "RelativeDocumentMoniker": "Controllers\\CommentController.cs",
@@ -133,12 +94,11 @@
               "RelativeToolTip": "Controllers\\CommentController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAwBwAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T11:45:34.965Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T11:45:34.965Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Comment.cs",
               "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\Comment.cs",
               "RelativeDocumentMoniker": "Models\\Comment.cs",
@@ -146,12 +106,11 @@
               "RelativeToolTip": "Models\\Comment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T11:20:51.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T11:20:51.992Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "DecodedToken.cs",
               "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Contracts\\DecodedToken.cs",
               "RelativeDocumentMoniker": "Contracts\\DecodedToken.cs",
@@ -159,25 +118,72 @@
               "RelativeToolTip": "Contracts\\DecodedToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T12:35:56.81Z",
+              "WhenOpened": "2026-03-08T12:35:56.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAmwHwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T12:09:27.345Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "RequestController.cs",
+              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\RequestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RequestController.cs",
+              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\RequestController.cs",
+              "RelativeToolTip": "Controllers\\RequestController.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T11:26:34.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "StatisticController.cs",
               "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\StatisticController.cs",
               "RelativeDocumentMoniker": "Controllers\\StatisticController.cs",
               "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\StatisticController.cs",
               "RelativeToolTip": "Controllers\\StatisticController.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAgwFAAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-08T10:40:29.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Request.cs",
+              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\Request.cs",
+              "RelativeDocumentMoniker": "Models\\Request.cs",
+              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\Request.cs",
+              "RelativeToolTip": "Models\\Request.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T11:17:15.102Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "User.cs",
+              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T11:15:41.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ApplicationContext.cs",
               "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\DB\\ApplicationContext.cs",
               "RelativeDocumentMoniker": "DB\\ApplicationContext.cs",
@@ -185,21 +191,7 @@
               "RelativeToolTip": "DB\\ApplicationContext.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAA2wBMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T11:12:06.62Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "F:\\GitProjects\\ISRPO_LP\\\u041C\u043E\u0434\u0443\u043B\u044C 1\\Backend\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAkwB4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T12:09:27.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T11:12:06.62Z"
             },
             {
               "$type": "Document",
@@ -211,8 +203,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAB3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-05T12:12:43.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T12:12:43.702Z"
             },
             {
               "$type": "Document",

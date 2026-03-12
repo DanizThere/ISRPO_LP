@@ -9,6 +9,7 @@ import GetRequests from './main/RequestAndUser/GetRequests'
 import ErrorPage from './main/ErrorPage'
 import CreateRequest from './main/RequestAndUser/CreateRequest'
 import CommentsRequest from './main/RequestAndUser/CommentsRequest'
+import UpdateRequest from './main/RequestAndUser/UpdateRequest'
 
 const router = createBrowserRouter([
   {
@@ -38,11 +39,10 @@ const router = createBrowserRouter([
         path:"create",
         element: <CreateRequest/>
       },
-
-  //     {
-  //       path:"update/:id",
-  //       element: <UpdateRequest/>
-  //     },
+      {
+        path:"update/:id",
+        element: <UpdateRequest/>
+      },
       {
         path:"comms/:id",
         element: <CommentsRequest/>

@@ -28,6 +28,16 @@ namespace Backend.Controllers
             return Ok(user);
         }
 
+        [HttpGet("get/master")]
+        public async Task<ActionResult<IEnumerable<User>>> GetMasters()
+        {
+            var user = await _dbContext.users.Where(x => x.type == "Мастер").ToListAsync();
+
+            if (user is null) return NotFound();
+
+            return Ok(user);
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login([FromBody] Login login)
         {

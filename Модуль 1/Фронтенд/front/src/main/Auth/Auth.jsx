@@ -16,12 +16,10 @@ export default function Auth(){
 
         try{
             const formData = Object.fromEntries(new FormData(event.target).entries())
-            const token = await UserAPI.login(formData)
-            if(token){
-                navigate("/request")
-            } 
+            await UserAPI.login(formData)
+            navigate("/request")
         } catch (error){
-            setError(`Произошла ошибка: ${error}. Повторите заново через какое-то время`)
+            setError(`${error}. Повторите заново через какое-то время`)
         }
     }
 
@@ -36,16 +34,16 @@ export default function Auth(){
             <label>
                     Логин:
                 </label>
-                <input type="text" id="authInput" name="login" required/>
+                <input type="text" className="authInput" name="login" required/>
 
                 <label>
                     Пароль:
                 </label>
-                <input type={isShowPassword ? "text" : "password"} id="authInput" name="password" required/>
+                <input type={isShowPassword ? "text" : "password"} className="authInput" name="password" required/>
 
                 <label>
                     Показывать пароль?
-                    <input type="checkbox" id="authInput" onChange={(e) => setShowPassword(e.target.checked)}/>
+                    <input type="checkbox" className="authInput" onChange={(e) => setShowPassword(e.target.checked)}/>
                 </label>
 
                 <div className="authButton">

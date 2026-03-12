@@ -91,8 +91,8 @@ namespace Backend.Controllers
 
                 var userName = $"Мастер: {user?.fio ?? "не назначен"}.";
                 var time = (request?.completiondate?.DayNumber - request?.startdate.DayNumber).ToString();
-                var addition = string.IsNullOrEmpty(time) ? "Время ремонта: в процессе ремонта" : $"Время рем{time} дней";
-                var resources = $"Затраченные ресурсы: {(string.IsNullOrEmpty(request?.repairparts) ? "не имеются" : request.repairparts)}";
+                var addition = string.IsNullOrEmpty(time) ? "Время ремонта: в процессе ремонта." : $"Время ремонта: {time} дней.";
+                var resources = $"Затраченные ресурсы: {(string.IsNullOrEmpty(request?.repairparts) ? "не имеются." : request.repairparts)}.";
 
                 var statistic = string.Join('\n', userName, addition, resources);
 
